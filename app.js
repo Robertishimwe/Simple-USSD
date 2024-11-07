@@ -58,12 +58,15 @@ app.get('/', (req, res) => {
 })
 
 app.post('/ussd', (req, res) => {
+  console.log(req.body.phoneNumber)
   let args = {
         phoneNumber: req.body.phoneNumber,
         sessionId: req.body.sessionId,
         serviceCode: req.body.serviceCode,
         text: req.body.text
   };
+
+  console.log(args)
   menu.run(args, resMsg => {
     res.send(resMsg);
   });
