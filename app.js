@@ -4,6 +4,9 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+
 let menu = new UssdMenu();
 
 menu.startState({
@@ -58,7 +61,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/ussd', (req, res) => {
-  console.log(req.body.phoneNumber)
+  console.log(req.body)
   let args = {
         phoneNumber: req.body.phoneNumber,
         sessionId: req.body.sessionId,
